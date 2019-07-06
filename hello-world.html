@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <button onclick='render([10, 20, 30, 40])'>Take Action!</button>
+        <div id='div1'>A</div>
+        <div id='div2'>B</div>
+        <div id='div3'>C</div>
+        <div id='div4'>D</div>
+        <script>
+            /* d3.selectAll('div')
+            .style('background-color', function(d, i) {
+               return (i % 2 === 0) ? 'lightblue' : 'lightgray';
+            }); */
+
+
+            function render(dataToRender){
+                var selector = d3.select('body')
+                    .selectAll('div')
+                    .data(dataToRender);
+
+                var entering = selector.enter();
+
+                entering.append('div')
+                    .text(function (d) { return d; });
+            }
+
+            render([10, 20, 30]);
+        </script>
+    </body>
+</html>
